@@ -9,7 +9,9 @@
     "prettier": "prettier --write src/**/*.{ts,tsx}",
     "prettier:check": "prettier --check src/**/*.{ts,tsx}",
     "tsc": "tsc -p tsconfig.json --noEmit",
-    "test": "craco test"
+    "test": "craco test --watchAll=false",
+    "test:watch": "craco test",
+    "test:coverage": "craco test --coverage --watchAll=false"
   },
   "eslintConfig": {
     "extends": "react-app"

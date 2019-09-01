@@ -35,10 +35,17 @@ face-transformation        # Root directory
 $ npm start                # Start web app with development mode
 $ npm run build
 
-$ npm run test
-$ npm run test:watch
-$ npm run test:coverage
+$ npm run lint
+$ npm run lint:ts          # Lint with ESLint
+$ npm run lint:css         # Lint with Stylelint
 
-$ npm run storybook
-$ npm run storybook:build
+$ npm run prettier         # Formatting with Prettier
+$ npm run prettier:check
+
+$ npm run test             # Run test with Jest
+$ npm run test:watch       # Run test with watch mode
+$ npm run test:coverage    # Run test with coverage
+
+$ npm run storybook        # Run storybook
+$ npm run storybook:build  # Build storybook
 ```

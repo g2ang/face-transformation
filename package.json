@@ -5,6 +5,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:ts": "eslint . --ext .ts,.tsx",
     "lint:css": "stylelint \"src/**/*.{css,scss}\"",
     "prettier": "prettier --write src/**/*.{ts,tsx}",
     "prettier:check": "prettier --check src/**/*.{ts,tsx}",
@@ -14,9 +16,6 @@
     "test:coverage": "craco test --coverage --watchAll=false",
     "storybook": "start-storybook -c .storybook",
     "storybook:build": "build-storybook"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -40,7 +39,6 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-hot-loader": "^4.12.11",
-    "react-scripts": "3.1.1",
     "rebass": "^4.0.5",
     "styled-components": "^4.3.2",
     "styled-system": "^5.1.1",
@@ -60,10 +58,23 @@
     "@types/storybook__react": "^4.0.2",
     "@types/styled-components": "^4.1.18",
     "@types/styled-system": "^5.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "craco-plugin-react-hot-reload": "^0.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-react-app": "^5.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "husky": "^3.0.4",
     "lint-staged": "^9.2.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
+    "react-scripts": "^3.1.1",
     "stylelint": "^10.1.0",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0"

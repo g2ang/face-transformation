@@ -21,10 +21,10 @@ $ git submodule init
 
 ```shell
 face-transformation        # Root directory
+├── encoder                # StyleGAN encoder basement (git submodule)
 ├── public                 # Static files for web app
 ├── server                 # Server with Flask
-├── src                    # Web app with React
-└── stylegan-encoder       # StyleGAN encoder basement (git submodule)
+└── src                    # Web app with React
 ```
 
 ## Scripts

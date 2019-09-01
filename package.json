@@ -14,7 +14,7 @@
     "test": "craco test --watchAll=false",
     "test:watch": "craco test",
     "test:coverage": "craco test --coverage --watchAll=false",
-    "storybook": "start-storybook -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook:build": "build-storybook"
   },
   "browserslist": {

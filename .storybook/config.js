@@ -1,12 +1,12 @@
 import { configure, setAddon } from '@storybook/react';
 import infoAddon from '@storybook/addon-info';
-import { setOptions } from '@storybook/addon-options';
+import { withOptions } from '@storybook/addon-options';
 
 setAddon(infoAddon);
 
 const req = require.context('../src', true, /\.stories\.tsx$/);
 
-setOptions({
+withOptions({
   name: 'Face Transformation',
   url: 'https://github.com/g2ang/face-transformation',
 });

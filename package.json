@@ -41,6 +41,9 @@
     "react-dom": "^16.9.0",
     "react-hot-loader": "^4.12.11",
     "react-scripts": "3.1.1",
+    "rebass": "^4.0.5",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.1.1",
     "typescript": "3.5.3"
   },
   "devDependencies": {
@@ -53,7 +56,10 @@
     "@storybook/addon-options": "^5.1.11",
     "@storybook/addons": "^5.1.11",
     "@storybook/react": "^5.1.11",
+    "@types/rebass": "^4.0.0",
     "@types/storybook__react": "^4.0.2",
+    "@types/styled-components": "^4.1.18",
+    "@types/styled-system": "^5.1.1",
     "craco-plugin-react-hot-reload": "^0.1.0",
     "husky": "^3.0.4",
     "lint-staged": "^9.2.3",

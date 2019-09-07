@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 
@@ -9,17 +9,19 @@ import { Camera, CameraContext, CameraProvider } from '.';
 const stories = storiesOf('Camera', module);
 
 const CameraCapture: React.FC = () => {
+  const [imageSrc, setImageSrc] = useState('');
   const { capture } = useContext(CameraContext);
   return (
     <Box>
+      <Box marginBottom={10}>{imageSrc}</Box>
       <Button
         backgroundColor="black"
         onClick={() => {
-          const imageSrc = capture();
-          console.log(imageSrc); // eslint-disable-line no-console
+          const src = capture();
+          setImageSrc(src);
         }}
       >
-        Click and See the console in DevTools
+        Click and See the result
       </Button>
     </Box>
   );

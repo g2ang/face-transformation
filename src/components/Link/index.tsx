@@ -3,4 +3,6 @@
  * @see https://rebassjs.org/link/
  * @see https://styled-system.com/api
  */
-export { Link as default } from 'rebass';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+export { Link as default, LinkProps } from 'rebass/styled-components';

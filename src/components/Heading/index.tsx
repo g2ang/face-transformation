@@ -3,4 +3,6 @@
  * @see https://rebassjs.org/flex/
  * @see https://styled-system.com/api
  */
-export { Heading as default } from 'rebass';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+export { Heading as default, HeadingProps } from 'rebass/styled-components';

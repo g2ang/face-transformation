@@ -3,4 +3,6 @@
  * @see https://rebassjs.org/flex/
  * @see https://styled-system.com/api
  */
-export { Flex as default } from 'rebass';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+export { Flex as default, FlexProps } from 'rebass/styled-components';

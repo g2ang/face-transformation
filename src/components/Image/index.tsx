@@ -3,4 +3,6 @@
  * @see https://rebassjs.org/image/
  * @see https://styled-system.com/api
  */
-export { Image as default } from 'rebass';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+export { Image as default, ImageProps } from 'rebass/styled-components';

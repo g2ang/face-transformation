@@ -3,4 +3,6 @@
  * @see https://rebassjs.org/button/
  * @see https://styled-system.com/api
  */
-export { Button as default } from 'rebass';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+export { Button as default, ButtonProps } from 'rebass/styled-components';

@@ -3,4 +3,6 @@
  * @see https://rebassjs.org/text/
  * @see https://styled-system.com/api
  */
-export { Text as default } from 'rebass';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+export { Text as default, TextProps } from 'rebass/styled-components';

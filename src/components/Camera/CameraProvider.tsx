@@ -6,7 +6,9 @@ import { PropsType } from 'components/PropsType';
 const defaultValue = {
   enable: false,
   error: new DOMException(),
-  capture() {},
+  capture() {
+    return '';
+  },
   setCapture(fn: () => string | null) {},
   setEnable(enable: boolean) {},
   setError(error: DOMException) {},
@@ -19,9 +21,9 @@ type CameraProviderProps = PropsType<typeof propTypes, typeof defaultProps>;
 
 const CameraProvider: React.FC<CameraProviderProps> = ({ children }) => {
   const [enable, setEnable] = useState(false);
-  const [capture, setCapture] = useState();
+  const [capture, setCapture] = useState<() => string>(() => () => '');
   const [error, setError] = useState(new DOMException());
-  const setCaptureCallback = (fn: () => string | null) => {
+  const setCaptureCallback = (fn: () => string) => {
     setCapture(() => fn);
   };
 

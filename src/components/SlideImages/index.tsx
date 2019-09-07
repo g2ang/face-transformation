@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OverflowFlex from 'components/OverflowFlex';
-import { PropsType } from 'components/PropsType';
+import PropsType from 'components/PropsType';
 import SlideImage from 'components/SlideImage';
 
 const propTypes = {

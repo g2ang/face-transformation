@@ -36,4 +36,5 @@ type WithDefaultProps<P, DP> = Omit<P, keyof DP> &
  * type Props = PropsType<typeof propTypes, typeof defaultProps>;
  * ```
  */
-export type PropsType<PT, DP = {}> = WithDefaultProps<PropTypes.InferProps<PT>, DP>;
+type PropsType<PT, DP = {}> = WithDefaultProps<PropTypes.InferProps<PT>, DP>;
+export default PropsType; // eslint-disable-line no-undef

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Image from 'components/Image';
-import { PropsType } from 'components/PropsType';
+import PropsType from 'components/PropsType';
 
 const propTypes = {
   id: PropTypes.number.isRequired,

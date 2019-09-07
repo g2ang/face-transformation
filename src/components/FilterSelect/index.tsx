@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Flex from 'components/Flex';
 import DarkButton from 'components/DarkButton';
-import { PropsType } from 'components/PropsType';
+import PropsType from 'components/PropsType';
 
 export enum Filter {
   CAMERA = 'CAMERA',

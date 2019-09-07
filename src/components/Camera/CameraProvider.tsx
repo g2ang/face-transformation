@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { PropsType } from 'components/PropsType';
+import PropsType from 'components/PropsType';
 
 const defaultValue = {
   enable: false,

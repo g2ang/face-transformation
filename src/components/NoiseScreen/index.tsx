@@ -1,7 +1,6 @@
 import React from 'react';
-import { ImageProps } from 'rebass';
 
-import Image from 'components/Image';
+import Image, { ImageProps } from 'components/Image';
 
 import noise from './noise.gif';
 

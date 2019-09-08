@@ -4,8 +4,9 @@ import Button from 'components/Button';
 
 const DarkButton = styled(Button)`
   background-color: black;
+  opacity: 0.6;
   :disabled {
-    opacity: 0.6;
+    opacity: 1;
   }
 `;
 

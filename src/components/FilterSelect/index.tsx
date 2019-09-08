@@ -25,7 +25,7 @@ const menus = [
 ];
 
 const FilterSelect: React.FC<FilterSelectProps> = ({ currentFilter, onClick }) => (
-  <Flex backgroundColor="white" padding="1rem" justifyContent="space-around">
+  <Flex padding="1rem" justifyContent="space-around">
     {menus.map(({ text, filter }) => (
       <DarkButton
         type="button"

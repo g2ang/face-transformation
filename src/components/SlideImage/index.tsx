@@ -20,7 +20,7 @@ type SlideImage = PropsType<typeof propTypes>;
 const SlideImage: React.FC<SlideImage> = ({ id, src, selected, onClick }) => (
   <Image
     src={src}
-    opacity={selected ? 1 : 0.2}
+    opacity={selected ? 1 : 0.4}
     height="100%"
     flex="none"
     onClick={() => onClick(id)}

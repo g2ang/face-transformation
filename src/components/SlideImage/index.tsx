@@ -5,7 +5,7 @@ import Image from 'components/Image';
 import PropsType from 'components/PropsType';
 
 const propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   selected: PropTypes.bool,
   onClick: PropTypes.func.isRequired,

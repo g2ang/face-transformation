@@ -8,7 +8,7 @@ import SlideImage from 'components/SlideImage';
 const propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       src: PropTypes.string.isRequired,
       selected: PropTypes.bool.isRequired,
     }).isRequired

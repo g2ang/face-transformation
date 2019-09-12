@@ -1,13 +1,24 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Button from 'components/Button';
+import PropsType from 'components/PropsType';
 
-const DarkButton = styled(Button)`
+const propTypes = {
+  active: PropTypes.bool,
+};
+
+const defaultProps = {
+  active: false,
+};
+
+type DarkButtonProps = PropsType<typeof propTypes, typeof defaultProps>;
+
+const DarkButton = styled(Button)<DarkButtonProps>`
   background-color: black;
-  opacity: 0.6;
-  :disabled {
-    opacity: 1;
-  }
+  opacity: ${props => (props.active ? 1 : 0.6)};
 `;
+
+DarkButton.defaultProps = defaultProps;
 
 export default DarkButton;

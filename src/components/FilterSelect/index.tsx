@@ -30,7 +30,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({ currentFilter, onClick }) =
       <DarkButton
         type="button"
         key={`dark--button--${filter}`}
-        disabled={currentFilter === filter}
+        active={currentFilter === filter}
         onClick={() => onClick(filter)}
       >
         {text}

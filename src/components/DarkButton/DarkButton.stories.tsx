@@ -9,8 +9,8 @@ const stories = storiesOf('DarkButton', module);
 
 stories.addDecorator(withA11y).add('default', () => (
   <>
-    <DarkButton>Default</DarkButton>
+    <DarkButton active={false}>Default</DarkButton>
     <Box margin={10} />
-    <DarkButton disabled>Disabled</DarkButton>
+    <DarkButton active>Active</DarkButton>
   </>
 ));

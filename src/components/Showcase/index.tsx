@@ -27,7 +27,7 @@ const Showcase: React.FC<Showcase> = ({ images, onClick }) => {
     images,
   ]);
   return ReactDOM.createPortal(
-    <FlexLayout backgroundColor="rgba(0,0,0,0.5)" position="fixed" bottom={0}>
+    <FlexLayout backgroundColor="rgba(0,0,0,0.5)" position="fixed" bottom={0} overflowX="scroll">
       <ShowcaseImages type={Filter.SMILE} images={smileImages} onClick={onClick} />
       <ShowcaseImages type={Filter.GENDER} images={genderImages} onClick={onClick} />
     </FlexLayout>,

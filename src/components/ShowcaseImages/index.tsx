@@ -22,7 +22,7 @@ const propTypes = {
 type ShowcaseImagesProps = PropsType<typeof propTypes>;
 
 const ShowcaseImages: React.FC<ShowcaseImagesProps> = ({ images, onClick }) => (
-  <OverflowFlex overflowX="scroll">
+  <OverflowFlex flex="0 0 auto" overflowX="scroll">
     {images.map(({ id, src }) => (
       <ShowcaseImage id={id} key={id} src={src} onClick={onClick} />
     ))}

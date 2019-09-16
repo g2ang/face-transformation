@@ -15,7 +15,7 @@ const propTypes = {
     }).isRequired
   ).isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
-  type: PropTypes.oneOf([Filter.GENDER, Filter.GENDER]).isRequired,
+  type: PropTypes.oneOf([Filter.GENDER, Filter.SMILE]).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

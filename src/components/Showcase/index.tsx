@@ -13,7 +13,7 @@ const propTypes = {
       id: PropTypes.string.isRequired,
       src: PropTypes.string.isRequired,
       coefficient: PropTypes.number.isRequired,
-      type: PropTypes.oneOf([Filter.GENDER, Filter.GENDER]).isRequired,
+      type: PropTypes.oneOf([Filter.GENDER, Filter.SMILE]).isRequired,
     }).isRequired
   ).isRequired,
   onClick: PropTypes.func.isRequired,

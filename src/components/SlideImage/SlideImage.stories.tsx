@@ -15,14 +15,14 @@ const src =
 const noop = () => {};
 
 stories.addDecorator(withA11y).add('default', () => (
-  <Flex width={700} height={100}>
+  <Flex height={100} marginTop={150}>
     <Flex justifyContent="space-evenly" alignItems="center">
       <Text>Selected Image</Text>
-      <SlideImage id={id} selected src={src} onClick={noop} />
+      <SlideImage id={id} selected src={src} generated onClick={noop} />
     </Flex>
     <Flex justifyContent="space-evenly" alignItems="center">
       <Text>Un-selected Image that is blurred</Text>
-      <SlideImage id={id} selected={false} src={src} onClick={noop} />
+      <SlideImage id={id} selected={false} src={src} generated={false} onClick={noop} />
     </Flex>
   </Flex>
 ));

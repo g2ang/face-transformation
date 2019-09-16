@@ -29,7 +29,6 @@ const IndexPage: React.FC = () => {
 
   const handleImageClick = (id: string) => {
     if (selectedImageId === id) {
-      console.log(id);
       toggleShowcase();
     } else {
       setSelectedImage(id);

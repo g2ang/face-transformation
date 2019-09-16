@@ -1,8 +1,9 @@
-/**
- * Flex component by rebass
- * @see https://rebassjs.org/flex/
- * @see https://styled-system.com/api
- */
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-export { Flex as default, FlexProps } from 'rebass/styled-components';
+import { Flex as RebassFlex, FlexProps as RebassFlexProps } from 'rebass/styled-components';
+import styled from 'styled-components';
+import { position, PositionProps } from 'styled-system';
+
+export type FlexProps = RebassFlexProps & PositionProps;
+
+const Flex = styled(RebassFlex)<FlexProps>(position);
+
+export default Flex;

@@ -6,12 +6,14 @@ import {
   BorderProps,
   MaxWidthProps,
   MinWidthProps,
+  position,
+  PositionProps,
 } from 'styled-system';
 
 import Flex, { FlexProps } from 'components/Flex';
 
-type FlexLayoutProps = FlexProps & BorderProps & MaxWidthProps & MinWidthProps;
+type FlexLayoutProps = FlexProps & BorderProps & MaxWidthProps & MinWidthProps & PositionProps;
 
-const FlexLayout = styled(Flex)<FlexLayoutProps>(border, maxWidth, minWidth);
+const FlexLayout = styled(Flex)<FlexLayoutProps>(border, maxWidth, minWidth, position);
 
 export default FlexLayout;

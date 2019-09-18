@@ -10,8 +10,13 @@ import dataset from './constants';
 const stories = storiesOf('SlideImages', module);
 
 function SlideImagesStory() {
-  const [selectedId, setSelectedId] = useState(0);
-  const images = dataset.map(({ id, src }) => ({ id, src, selected: selectedId === id }));
+  const [selectedId, setSelectedId] = useState('');
+  const images = dataset.map(({ id, src }, index) => ({
+    id,
+    src,
+    selected: selectedId === id,
+    generated: index % 2 === 0,
+  }));
   return (
     <SlideImages
       images={images}

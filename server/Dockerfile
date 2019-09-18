@@ -1,4 +1,4 @@
-FROM ubuntu:18.04.3
+FROM nvidia/cuda:10.1-runtime-ubuntu16.04
 
 ENV PYTHON_VERSION 3.7
 ENV CUDNN_VERSION 7.4.1.5
@@ -31,9 +31,7 @@ RUN conda install -y python=${PYTHON_VERSION} && \
     conda update -y conda
 
 # Install packages
-COPY requirements.txt requirements.txt
-RUN pip --no-cache-dir install -r requirements.txt && \
-    rm requirements.txt
+RUN pip --no-cache-dir install numpy Pillow tensorflow-gpu requests Flask
 
 # Clean up
 RUN apt-get clean && \
@@ -41,11 +39,12 @@ RUN apt-get clean && \
     conda clean --all --yes
 
 # Expose port
-EXPOSE 6006
+EXPOSE 8080
 
 # Set default work directory
 RUN mkdir /workspace
-COPY . /workspace
+COPY ./server /workspace
+COPY ./encoder ./encoder
 WORKDIR /workspace
 
 ENTRYPOINT ["python"]

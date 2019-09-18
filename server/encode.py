@@ -1,6 +1,6 @@
 import os
 import pickle
-import PIL.Image
+from PIL import Image
 import numpy as np
 import sys
 sys.path.append("../encoder")
@@ -21,7 +21,7 @@ def generate_image(latent_vector):
     latent_vector = latent_vector.reshape((1, 18, 512))
     generator.set_dlatents(latent_vector)
     img_array = generator.generate_images()[0]
-    img = PIL.Image.fromarray(img_array, 'RGB')
+    img = Image.fromarray(img_array, 'RGB')
     return img.resize((256, 256))
 
 def move_and_show(latent_vector, direction, coeffs):

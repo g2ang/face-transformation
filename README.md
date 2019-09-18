@@ -6,6 +6,7 @@ Face Transformation with StyleGAN
 
 - Node.js LTS
 - Python v3.6.0+
+- Docker
 
 ## Installation
 
@@ -15,6 +16,14 @@ $ cd face-transformation
 $ npm i
 $ pip install -r requirements.txt
 $ git submodule init
+```
+
+## Run Server
+based on workspace directory
+
+```shell
+$ docker build -t face-transformation -f server/Dockerfile .
+$ docker run -p 8080:8080 face-transformation
 ```
 
 ## Codebase

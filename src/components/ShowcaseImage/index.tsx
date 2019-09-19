@@ -15,6 +15,8 @@ type ShowcaseImageProps = PropsType<typeof propTypes>;
 
 const BlurredImage = styled(Image)`
   transition: opacity 0.8s;
+  width: 200px;
+  height: 200px;
   :hover {
     opacity: 0.4;
   }

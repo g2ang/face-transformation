@@ -1,4 +1,5 @@
 import os
+from os.path import join
 import pickle
 from PIL import Image
 import numpy as np
@@ -33,6 +34,8 @@ def move_and_show(latent_vector, direction, coeffs):
         ax[i].set_title('Coeff: %0.1f' % coeff)
     [x.axis('off') for x in ax]
     # plt.show()
+
+PROJ_PATH = '../encoder'
 
 smile_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/smile.npy'))
 gender_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/gender.npy'))

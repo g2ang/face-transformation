@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import PromiseFileReader from 'promise-file-reader';
 import ImageUploader from 'react-images-upload';
 
@@ -8,8 +8,6 @@ import FlexLayout from 'components/FlexLayout';
 import Showcase from 'components/Showcase';
 import SlideImages from 'components/SlideImages';
 
-import dataset from 'components/Showcase/constants';
-
 import './resetReactImageUpload.css';
 
 const IndexPage: React.FC = () => {
@@ -18,13 +16,14 @@ const IndexPage: React.FC = () => {
     selectedImageId,
     setSelectedImage,
     generateImages,
+    generatedImages,
     showcase,
     toggleShowcase,
   } = useContext(AppStateContext);
 
   const handleUpload = async (files: File[]) => {
-    const image = await PromiseFileReader.readAsDataURL(files[files.length - 1]);
-    generateImages(image);
+    const imageSrc = await PromiseFileReader.readAsDataURL(files[files.length - 1]);
+    generateImages(imageSrc, files[files.length - 1]);
   };
 
   const handleImageClick = (id: string) => {
@@ -34,6 +33,11 @@ const IndexPage: React.FC = () => {
       setSelectedImage(id);
     }
   };
+
+  const images = useMemo(
+    () => generatedImages.filter(({ originalImageId }) => originalImageId === selectedImageId),
+    [generatedImages, selectedImageId]
+  );
 
   return (
     <FlexLayout
@@ -47,12 +51,7 @@ const IndexPage: React.FC = () => {
       <Flex height={200}>
         <SlideImages images={visibleImages} onClick={handleImageClick} />
       </Flex>
-      {showcase && (
-        <Showcase
-          images={dataset.filter(({ srcId }) => srcId === selectedImageId)}
-          onClick={() => {}}
-        />
-      )}
+      {showcase && <Showcase images={images} onClick={() => {}} />}
     </FlexLayout>
   );
 };

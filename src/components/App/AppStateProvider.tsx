@@ -7,15 +7,13 @@ import generateId from 'libs/generateId';
 import GeneratedImage from './models/GeneratedImage';
 import OriginalImage from './models/OriginalImage';
 import VisibleImage from './models/VisibleImage';
-
-import originalDataset from '../SlideImages/constants';
-import generatedDataset from '../Showcase/constants';
+import Service from './services';
 
 const defaultValue = {
   visibleImages: [] as VisibleImage[],
   originalImages: [] as OriginalImage[],
   setOriginalImages(images: OriginalImage[]) {},
-  generateImages(imageSrc: string) {},
+  generateImages(imageSrc: string, file: File) {},
   generatedImages: [] as GeneratedImage[],
   setGeneratedImages(images: GeneratedImage[]) {},
   selectedImageId: '',
@@ -32,12 +30,8 @@ const defaultProps = { children: null };
 type AppStateProps = PropsType<typeof propTypes, typeof defaultProps>;
 
 const AppStateProvider: React.FC<AppStateProps> = ({ children }) => {
-  const [originalImages, setOriginalImages] = useState<OriginalImage[]>(
-    originalDataset.map(({ id, src }) => new OriginalImage(id, src))
-  );
-  const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>(
-    generatedDataset.map(({ id, src, srcId, type }) => new GeneratedImage(id, src, srcId, type))
-  );
+  const [originalImages, setOriginalImages] = useState<OriginalImage[]>([]);
+  const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
   const [selectedImageId, setSelectedImage] = useState('');
   const [showcase, setShowcase] = useState(false);
 
@@ -46,14 +40,19 @@ const AppStateProvider: React.FC<AppStateProps> = ({ children }) => {
   };
 
   const generateImages = useCallback(
-    (imageSrc: string) => {
+    async (imageSrc: string, file: File) => {
       const id = generateId();
       const newOriginalImages = originalImages.slice();
       newOriginalImages.unshift(new OriginalImage(id, imageSrc));
       setOriginalImages(newOriginalImages);
       setSelectedImage(id);
+
+      const service = new Service();
+      const data = await service.generateImages(file, id);
+      const newGeneratedImages = data.concat(generatedImages);
+      setGeneratedImages(newGeneratedImages);
     },
-    [originalImages]
+    [originalImages, generatedImages]
   );
 
   const visibleImages = useMemo(() => {

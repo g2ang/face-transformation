@@ -39,7 +39,7 @@ RUN apt-get clean && \
     conda clean --all --yes
 
 # Expose port
-EXPOSE 8080
+EXPOSE 80
 
 # Set default work directory
 RUN mkdir /workspace

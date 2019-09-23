@@ -1,4 +1,5 @@
 import os
+from os.path import join
 import pickle
 from PIL import Image
 import numpy as np
@@ -24,16 +25,21 @@ def generate_image(latent_vector):
     img = Image.fromarray(img_array, 'RGB')
     return img.resize((256, 256))
 
-def move_and_show(latent_vector, direction, coeffs):
-    # fig,ax = plt.subplots(1, len(coeffs), figsize=(15, 10), dpi=80)
+def convert_style(latent_vector, direction, coeffs):
+    generated_images = {}
+
     for i, coeff in enumerate(coeffs):
         new_latent_vector = latent_vector.copy()
         new_latent_vector[:8] = (latent_vector + coeff*direction)[:8]
-        ax[i].imshow(generate_image(new_latent_vector))
-        ax[i].set_title('Coeff: %0.1f' % coeff)
-    [x.axis('off') for x in ax]
-    # plt.show()
+        generated_images[coeff] = generate_image(new_latent_vector)
+
+    return generated_images
+
+PROJ_PATH = '../encoder'
 
 smile_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/smile.npy'))
 gender_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/gender.npy'))
 age_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/age.npy'))
+
+man_latent_vector = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_representations/donald_trump_01.npy'))
+woman_latent_vector = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_representations/hillary_clinton_01.npy'))

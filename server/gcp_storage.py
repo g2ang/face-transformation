@@ -1,6 +1,7 @@
 from google.cloud import storage
 import tempfile
 from PIL import Image
+import io
 
 storage_client = storage.Client()
 bucket_name = 'stylegan_images'
@@ -13,12 +14,19 @@ def create_folder(destination_folder_name):
     blob.upload_from_string('')
     print('Created {} .'.format(destination_folder_name))
 
+
+def image_to_byte_array(image):
+    imgByteArr = io.BytesIO()
+    image.save(imgByteArr, format=image.format)
+    imgByteArr = imgByteArr.getvalue()
+    return imgByteArr
+
 def upload_files(files_dictionary):
     image_dictionary = {}
 
     for key, value in files_dictionary.items():
         temp_file = tempfile.NamedTemporaryFile()
-        temp_file.write(value)
+        temp_file.write(image_to_byte_array(value))
         image.save(temp_file, value.format)
         blob.upload_from_filename(temp_file)
         image[key] = f'{image_base_end_point}temp_file.name{value.format}'

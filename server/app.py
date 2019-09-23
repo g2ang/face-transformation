@@ -50,8 +50,8 @@ def smile():
           gender_image_names = gcp_storage.upload_files(gender_images)
 
           return { 'gender': gender_image_names, 'smile': smile_image_names }, 201
-      except error:
-          print(error)
+      except Exception as ex:
+          print(ex)
           return 'fail', 500
   else:
     return '404 Not Found'

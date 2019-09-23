@@ -16,7 +16,7 @@ def create_folder(destination_folder_name):
 def upload_files(files_dictionary):
     image_dictionary = {}
 
-    for key, value in files:
+    for key, value in files_dictionary:
         temp_file = tempfile.NamedTemporaryFile()
         temp_file.write(value)
         image.save(temp_file, value.format)

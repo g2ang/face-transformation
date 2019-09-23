@@ -42,8 +42,8 @@ def smile():
     if file.filename == '':
       return 'No selected file', 400
     if file and allowed_file(file.filename):
-      smile_images = encode.convert_style(encode.smile_direction, encode.woman_latent_vector)
-      gender_images = encode.convert_style(encode.smile_direction, encode.woman_latent_vector)
+      smile_images = encode.convert_style(encode.smile_direction, encode.woman_latent_vector, smile_coeff)
+      gender_images = encode.convert_style(encode.smile_direction, encode.woman_latent_vector, gender_coeff)
 
       try:
           smile_image_names = gcp_storage.upload_files(smile_images)

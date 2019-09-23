@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import PropsType from 'components/PropsType';
@@ -6,6 +6,7 @@ import generateId from 'libs/generateId';
 
 import GeneratedImage from './models/GeneratedImage';
 import OriginalImage from './models/OriginalImage';
+import SerializableState from './models/SerializableState';
 import VisibleImage from './models/VisibleImage';
 import Service from './services';
 
@@ -34,6 +35,34 @@ const AppStateProvider: React.FC<AppStateProps> = ({ children }) => {
   const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
   const [selectedImageId, setSelectedImage] = useState('');
   const [showcase, setShowcase] = useState(false);
+
+  useEffect(() => {
+    const previousState = localStorage.getItem('face-transformation:state');
+    if (previousState) {
+      const state: SerializableState = JSON.parse(previousState);
+      const initialGeneratedImages = state.generatedImages.map(
+        ({ id, src, originalImageId, type, coefficient }) =>
+          new GeneratedImage(id, src, originalImageId, type, coefficient)
+      );
+      const initialOriginalImages = state.originalImages.map(
+        ({ id, src }) => new OriginalImage(id, src)
+      );
+      setGeneratedImages(initialGeneratedImages);
+      setOriginalImages(initialOriginalImages);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handler = () => {
+      const state: SerializableState = {
+        originalImages,
+        generatedImages,
+      };
+      localStorage.setItem('face-transformation:state', JSON.stringify(state));
+    };
+    window.addEventListener('beforeunload', handler);
+    return window.addEventListener('beforeunload', handler);
+  }, [originalImages, generatedImages]);
 
   const toggleShowcase = () => {
     setShowcase(!showcase);

@@ -4,7 +4,6 @@ from PIL import Image
 
 storage_client = storage.Client()
 bucket_name = 'stylegan_images'
-bucket = storage_client.create_bucket(bucket_name)
 blob = bucket.blob(destination_folder_name)
 
 image_base_end_point = 'https://storage.googleapis.com/stylegan_images/'

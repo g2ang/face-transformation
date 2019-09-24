@@ -2,9 +2,8 @@ from google.cloud import storage
 import tempfile
 from PIL import Image
 import io
-import os
 import datetime
-current_path = os.getcwd()
+import os_util
 storage_client = storage.Client()
 bucket_name = 'stylegan'
 bucket = storage_client.get_bucket(bucket_name)
@@ -24,6 +23,6 @@ def upload_files(files_dictionary):
         blob = bucket.blob(file_name)
         blob.upload_from_filename(file_name)
         image_dictionary[key] = f'{image_base_end_point}{file_name}'
-        os.remove(f'{current_path}/{file_name}')
+        os_util.remove_file_relative_path(file_name)
 
     return image_dictionary

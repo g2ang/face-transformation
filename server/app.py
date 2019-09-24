@@ -58,7 +58,7 @@ def smile():
 
       smile_image_names = gcp_storage.upload_files(smile_images)
       gender_image_names = gcp_storage.upload_files(gender_images)
-      encode.clear_temp_folder()
+      os_util_wrapper.clear_temp_folder()
 
       return { 'gender': gender_image_names, 'smile': smile_image_names }, 201
   else:

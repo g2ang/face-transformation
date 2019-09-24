@@ -77,9 +77,13 @@ const AppStateProvider: React.FC<AppStateProps> = ({ children }) => {
       setSelectedImage(id);
 
       const service = new Service();
-      const data = await service.generateImages(file, id);
-      const newGeneratedImages = data.concat(generatedImages);
-      setGeneratedImages(newGeneratedImages);
+      try {
+        const data = await service.generateImages(file, id);
+        const newGeneratedImages = data.concat(generatedImages);
+        setGeneratedImages(newGeneratedImages);
+      } catch (error) {
+        console.error(error);
+      }
     },
     [originalImages, generatedImages]
   );

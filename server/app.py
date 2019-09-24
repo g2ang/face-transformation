@@ -53,8 +53,8 @@ def smile():
 
       latent_vector = encode.load_generated_latent_vector()
 
-      smile_images = encode.convert_style(encode.smile_direction, latent_vector, smile_coeff)
-      gender_images = encode.convert_style(encode.smile_direction, latent_vector, gender_coeff)
+      smile_images = encode.convert_style(latent_vector, encode.smile_direction, smile_coeff)
+      gender_images = encode.convert_style(latent_vector, encode.gender_direction, gender_coeff)
 
       smile_image_names = gcp_storage.upload_files(smile_images)
       gender_image_names = gcp_storage.upload_files(gender_images)

@@ -47,6 +47,7 @@ def smile():
     if file.filename == '':
       return 'No selected file', 400
     if file and allowed_file(file.filename):
+      encode.clear_temp_folder()
       os_util_wrapper.save_temp_img(file)
       encode.generate_latent_vector()
 

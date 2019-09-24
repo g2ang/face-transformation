@@ -54,7 +54,7 @@ def load_generated_latent_vector():
 def clear_temp_folder():
     os_util_wrapper.remove_all_file_at_directory("raw_temp_img")
     os_util_wrapper.remove_all_file_at_directory("aligned_temp_img")    
-    os_util_wrapper.remove_all_file_at_directory("generated_temp_img")    
+    os_util_wrapper.remove_all_file_at_directory("generated_temp_img")
     os_util_wrapper.remove_all_file_at_directory("temp_latent_representations")
 
 smile_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/smile.npy'))

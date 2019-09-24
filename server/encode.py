@@ -39,7 +39,7 @@ def convert_style(latent_vector, direction, coeffs):
 
 def generate_latent_vector():
     align_image_script_path = f"{os_util_wrapper.parent_path}/encoder/align_images.py"
-    align_image_script_command = f"python {align_image_script_path} {os_util_wrapper.parent_path}/server/raw_temp_img {os_util_wrapper..parent_path}/server/aligned_temp_img"
+    align_image_script_command = f"python {align_image_script_path} {os_util_wrapper.parent_path}/server/raw_temp_img {os_util_wrapper.parent_path}/server/aligned_temp_img"
     os.system(align_image_script_command)
 
     encode_images_script_path = f"{os_util_wrapper.parent_path}/encoder/encode_images.py"

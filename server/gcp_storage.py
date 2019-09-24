@@ -19,9 +19,9 @@ def upload_files(files_dictionary):
     dt_name = date.strftime("%Y-%m-%d-%H-%M-%S")
     for key, value in files_dictionary.items():
         file_name = f"{dt_name}({key}).png"
-        file_path = f"{os_util_wrapper.current_path}/temp_done_img/{file_name}"
+        file_path = f"temp_done_img/{file_name}"
         value.save(file_path)
-        blob = bucket.blob(file_name)
+        blob = bucket.blob(f"images/{file_name}")
         blob.upload_from_filename(file_path)
         image_dictionary[key] = f'{image_base_end_point}{file_name}'
 

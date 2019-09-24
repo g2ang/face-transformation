@@ -45,9 +45,9 @@ def generate_latent_vector():
     os.system(f"python3.7 {encode_images_script_path} {os_util_wrapper.current_path}/aligned_temp_img {os_util_wrapper.current_path}/generated_temp_img {os_util_wrapper.current_path}/temp_latent_representations")
 
 def load_generated_latent_vector():
-    for file in os.listdir("/temp_latent_representations"):
+    for file in os.listdir(f"{os_util_wrapper.current_path}/temp_latent_representations"):
         if file.endswith(".npy"):
-            return np.load(join("/temp_latent_representations", file))
+            return np.load(join("{os_util_wrapper.current_path}/temp_latent_representations", file))
 
 def clear_temp_folder():
     os_util_wrapper.remove_all_file_at_directory("raw_temp_img")

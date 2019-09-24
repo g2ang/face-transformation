@@ -2,6 +2,7 @@ from flask import Flask, escape, request
 import encode
 import gcp_storage
 from flask_cors import CORS
+import os_util
 
 app = Flask(__name__)
 cors = CORS(app, resources={
@@ -46,13 +47,17 @@ def smile():
     if file.filename == '':
       return 'No selected file', 400
     if file and allowed_file(file.filename):
-      #TODO latent vector 구해야함
+      os_util.save_temp_img(file)
+      encode.generate_latent_vector()
 
-      smile_images = encode.convert_style(encode.smile_direction, encode.woman_latent_vector, smile_coeff)
-      gender_images = encode.convert_style(encode.smile_direction, encode.woman_latent_vector, gender_coeff)
+      latent_vector = load_generated_latent_vector()
+
+      smile_images = encode.convert_style(encode.smile_direction, latent_vector, smile_coeff)
+      gender_images = encode.convert_style(encode.smile_direction, latent_vector, gender_coeff)
 
       smile_image_names = gcp_storage.upload_files(smile_images)
       gender_image_names = gcp_storage.upload_files(gender_images)
+      encode.clear_temp_folder()
 
       return { 'gender': gender_image_names, 'smile': smile_image_names }, 201
   else:

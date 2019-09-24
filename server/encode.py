@@ -39,17 +39,17 @@ def convert_style(latent_vector, direction, coeffs):
 
 def generate_latent_vector():
     align_image_script_path = f"{os_util_wrapper.parent_path}/encoder/align_images.py"
-    align_image_script_command = f"python {align_image_script_path} {os_util_wrapper.current_path}/raw_temp_img {os_util_wrapper.current_path}/aligned_temp_img"
+    align_image_script_command = f"python {align_image_script_path} {os_util_wrapper.parent_path}/server/raw_temp_img {os_util_wrapper..parent_path}/server/aligned_temp_img"
     os.system(align_image_script_command)
 
     encode_images_script_path = f"{os_util_wrapper.parent_path}/encoder/encode_images.py"
-    encode_images_script_command = f"python {encode_images_script_path} {os_util_wrapper.current_path}/aligned_temp_img {os_util_wrapper.current_path}/generated_temp_img {os_util_wrapper.current_path}/temp_latent_representations"
+    encode_images_script_command = f"python {encode_images_script_path} {os_util_wrapper.parent_path}/server/aligned_temp_img {os_util_wrapper.parent_path}/server/generated_temp_img {os_util_wrapper.parent_path}/server/temp_latent_representations"
     os.system(encode_images_script_command)
 
 def load_generated_latent_vector():
-    for file in os.listdir(f"{os_util_wrapper.current_path}/temp_latent_representations"):
+    for file in os.listdir(f"{os_util_wrapper.parent_path}/server/temp_latent_representations"):
         if file.endswith(".npy"):
-            return np.load(join("{os_util_wrapper.current_path}/temp_latent_representations", file))
+            return np.load(join("{os_util_wrapper.parent_path}/server/temp_latent_representations", file))
 
 def clear_temp_folder():
     os_util_wrapper.remove_all_file_at_directory("raw_temp_img")

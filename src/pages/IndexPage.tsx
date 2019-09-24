@@ -49,10 +49,26 @@ const IndexPage: React.FC = () => {
       justifyContent="center"
       margin="0 auto"
     >
-      <ImageUploader className="a" buttonText="Choose image" onChange={handleUpload} />
-      <Button type="button" marginBottom={10} onClick={clear}>
-        Clear
-      </Button>
+      <ImageUploader
+        style={{ display: 'inline-block' }}
+        fileContainerStyle={{ padding: 0 }}
+        buttonText="Choose image"
+        buttonStyles={{
+          borderRadius: 4,
+          backgroundColor: '#07c',
+          color: '#fff',
+          fontSize: 16,
+          fontWeight: 700,
+          padding: '8px 16px',
+        }}
+        withLabel={false}
+        onChange={handleUpload}
+      />
+      <FlexLayout justifyContent="center" marginBottom={20}>
+        <Button type="button" marginBottom={10} width={142} onClick={clear}>
+          Clear
+        </Button>
+      </FlexLayout>
       <Flex height={200}>
         <SlideImages images={visibleImages} onClick={handleImageClick} />
       </Flex>

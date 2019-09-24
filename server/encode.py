@@ -38,11 +38,13 @@ def convert_style(latent_vector, direction, coeffs):
     return generated_images
 
 def generate_latent_vector():
-    align_image_script_path = join(PROJ_PATH, 'align_images.py')    
-    os.system(f"python3.7 {align_image_script_path} {os_util_wrapper.current_path}/raw_temp_img {os_util_wrapper.current_path}/aligned_temp_img")
+    align_image_script_path = f"{os_util_wrapper.parent_path}/align_images.py"
+    align_image_script_command = f"python {align_image_script_path} {os_util_wrapper.current_path}/raw_temp_img {os_util_wrapper.current_path}/aligned_temp_img"
+    os.system(align_image_script_command)
 
-    encode_images_script_path = join(PROJ_PATH, 'encode_images.py')
-    os.system(f"python3.7 {encode_images_script_path} {os_util_wrapper.current_path}/aligned_temp_img {os_util_wrapper.current_path}/generated_temp_img {os_util_wrapper.current_path}/temp_latent_representations")
+    encode_images_script_path = f"{os_util_wrapper.parent_path}/encode_images.py"
+    encode_images_script_command = f"python {encode_images_script_path} {os_util_wrapper.current_path}/aligned_temp_img {os_util_wrapper.current_path}/generated_temp_img {os_util_wrapper.current_path}/temp_latent_representations"
+    os.system(encode_images_script_command)
 
 def load_generated_latent_vector():
     for file in os.listdir(f"{os_util_wrapper.current_path}/temp_latent_representations"):

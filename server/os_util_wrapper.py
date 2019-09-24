@@ -1,6 +1,7 @@
 import os 
 import shutil
 
+parent_path = os.path.abspath(os.pardir)
 current_path = os.getcwd()
 
 def remove_file_relative_path(file_name):

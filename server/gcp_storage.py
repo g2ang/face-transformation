@@ -2,36 +2,26 @@ from google.cloud import storage
 import tempfile
 from PIL import Image
 import io
+import datetime
 
 storage_client = storage.Client()
-bucket_name = 'stylegan_images'
+bucket_name = 'stylegan'
 bucket = storage_client.get_bucket(bucket_name)
-blob = bucket.blob('/')
-
-image_base_end_point = 'https://storage.googleapis.com/stylegan_images/'
+image_base_end_point = 'https://storage.googleapis.com/stylegan/images/'
 
 def create_folder(destination_folder_name):
     blob.upload_from_string('')
     print('Created {} .'.format(destination_folder_name))
 
-
-def image_to_byte_array(image):
-    imgByteArr = io.BytesIO()
-    image.save(imgByteArr, format=image.format)
-    imgByteArr = imgByteArr.getvalue()
-    return imgByteArr
-
 def upload_files(files_dictionary):
     image_dictionary = {}
-
+    date = datetime.datetime.now()
+    dt_name = date.strftime("%Y-%m-%d-%H-%M-%S")
     for key, value in files_dictionary.items():
-        temp_file = tempfile.NamedTemporaryFile()
-        temp_file.write(image_to_byte_array(value))
-        image.save(temp_file, value.format)
-        blob.upload_from_filename(temp_file)
-        image[key] = f'{image_base_end_point}temp_file.name{value.format}'
-        print('File {} uploaded to {}.'.format(
-            source_file_name,
-            destination_blob_name))
+        file_name = f"{dt_name}({key}).jpeg"
+        value.save(file_name)
+        blob = bucket.blob(file_name)
+        blob.upload_from_filename(file_name)
+        image_dictionary[key] = f'{image_base_end_point}{file_name}'
 
     return image_dictionary

@@ -38,11 +38,11 @@ def convert_style(latent_vector, direction, coeffs):
     return generated_images
 
 def generate_latent_vector():
-    align_image_script_path = f"{os_util_wrapper.parent_path}/align_images.py"
+    align_image_script_path = f"{os_util_wrapper.parent_path}/encoder/align_images.py"
     align_image_script_command = f"python {align_image_script_path} {os_util_wrapper.current_path}/raw_temp_img {os_util_wrapper.current_path}/aligned_temp_img"
     os.system(align_image_script_command)
 
-    encode_images_script_path = f"{os_util_wrapper.parent_path}/encode_images.py"
+    encode_images_script_path = f"{os_util_wrapper.parent_path}/encoder/encode_images.py"
     encode_images_script_command = f"python {encode_images_script_path} {os_util_wrapper.current_path}/aligned_temp_img {os_util_wrapper.current_path}/generated_temp_img {os_util_wrapper.current_path}/temp_latent_representations"
     os.system(encode_images_script_command)
 

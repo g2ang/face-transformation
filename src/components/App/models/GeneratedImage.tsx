@@ -6,10 +6,13 @@ class GeneratedImage extends OriginalImage {
 
   type: Filter;
 
-  constructor(id: string, src: string, originalImageId: string, type: Filter) {
+  coefficient: number;
+
+  constructor(id: string, src: string, originalImageId: string, type: Filter, coefficient: number) {
     super(id, src);
     this.originalImageId = originalImageId;
     this.type = type;
+    this.coefficient = coefficient;
   }
 }
 

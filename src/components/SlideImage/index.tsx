@@ -24,7 +24,8 @@ const SlideImage: React.FC<SlideImage> = ({ id, src, selected, generated, onClic
     <Image
       src={src}
       opacity={selected ? 1 : 0.4}
-      height="100%"
+      width={200}
+      height={200}
       flex="none"
       onClick={() => onClick(id)}
     />

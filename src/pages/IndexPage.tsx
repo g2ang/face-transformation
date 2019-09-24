@@ -3,6 +3,7 @@ import PromiseFileReader from 'promise-file-reader';
 import ImageUploader from 'react-images-upload';
 
 import { AppStateContext } from 'components/App';
+import Button from 'components/Button';
 import Flex from 'components/Flex';
 import FlexLayout from 'components/FlexLayout';
 import Showcase from 'components/Showcase';
@@ -19,6 +20,7 @@ const IndexPage: React.FC = () => {
     generatedImages,
     showcase,
     toggleShowcase,
+    clear,
   } = useContext(AppStateContext);
 
   const handleUpload = async (files: File[]) => {
@@ -48,6 +50,9 @@ const IndexPage: React.FC = () => {
       margin="0 auto"
     >
       <ImageUploader className="a" buttonText="Choose image" onChange={handleUpload} />
+      <Button type="button" marginBottom={10} onClick={clear}>
+        Clear
+      </Button>
       <Flex height={200}>
         <SlideImages images={visibleImages} onClick={handleImageClick} />
       </Flex>

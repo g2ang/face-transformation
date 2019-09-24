@@ -21,6 +21,7 @@ const defaultValue = {
   setSelectedImage(id: string) {},
   showcase: false,
   toggleShowcase() {},
+  clear() {},
 };
 
 export const AppStateContext = React.createContext(defaultValue);
@@ -97,6 +98,11 @@ const AppStateProvider: React.FC<AppStateProps> = ({ children }) => {
     }));
   }, [selectedImageId, originalImages, generatedImages]);
 
+  const clear = () => {
+    setOriginalImages([]);
+    setGeneratedImages([]);
+  };
+
   return (
     <AppStateContext.Provider
       value={{
@@ -110,6 +116,7 @@ const AppStateProvider: React.FC<AppStateProps> = ({ children }) => {
         setSelectedImage,
         showcase,
         toggleShowcase,
+        clear,
       }}
     >
       {children}

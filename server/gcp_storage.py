@@ -22,8 +22,7 @@ def upload_files(files_dictionary):
         file_path = f"{os_util_wrapper.current_path}/temp_done_img/{file_name}"
         value.save(file_path)
         blob = bucket.blob(file_name)
-        with open(file_path, "rb") as my_file:
-            blob.upload_from_file(my_file)
+        blob.upload_from_filename(file_path)
         image_dictionary[key] = f'{image_base_end_point}{file_name}'
 
     return image_dictionary

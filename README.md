@@ -22,8 +22,9 @@ $ git submodule init
 based on workspace directory
 
 ```shell
-$ docker build -t face-transformation -f server/Dockerfile .
-$ docker run -p 8080:8080 face-transformation
+$ cd server
+$ pip install -r requirements.txt
+$ flask run --host "0.0.0.0" --port "8080"
 ```
 
 ## Codebase

@@ -21,6 +21,5 @@ def remove_all_file_at_directory(directory):
           print(e)
 
 def save_temp_img(img):
-    name = secure_filename(img.filename)
-    img.save(f"{current_path}/raw_temp_img", name)
+    img.save(f"{current_path}/raw_temp_img", img.name)
     return f"{current_path}/raw_temp_img/{name}"

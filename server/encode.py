@@ -1,5 +1,6 @@
 import os
 from os.path import join
+import os_util
 import pickle
 from PIL import Image
 import numpy as np
@@ -11,6 +12,7 @@ import config
 from encoder.generator_model import Generator
 
 URL_FFHQ = 'https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ'
+PROJ_PATH = '../encoder'
 
 tflib.init_tf()
 with dnnlib.util.open_url(URL_FFHQ, cache_dir=config.cache_dir) as f:
@@ -35,7 +37,23 @@ def convert_style(latent_vector, direction, coeffs):
 
     return generated_images
 
-PROJ_PATH = '../encoder'
+def generate_latent_vector():
+    align_image_script_path = join(PROJ_PATH, 'align_images.py')    
+    os.system(f"python3.7 {align_image_script_path} {os_util.current_path}/raw_temp_img {os_util.current_path}/aligned_temp_img")
+
+    encode_images_script_path = join(PROJ_PATH, 'encode_images.py')
+    os.system(f"python3.7 {encode_images_script_path} {os_util.current_path}/aligned_temp_img {os_util.current_path}/generated_temp_img {os_util.current_path}/temp_latent_representations")
+
+def load_generated_latent_vector():
+    for file in os.listdir("/temp_latent_representations"):
+        if file.endswith(".npy"):
+            return np.load(join("/temp_latent_representations", file))
+
+def clear_temp_folder():
+    os_util.remove_all_file_at_directory("raw_temp_img")
+    os_util.remove_all_file_at_directory("aligned_temp_img")    
+    os_util.remove_all_file_at_directory("generated_temp_img")    
+    os_util.remove_all_file_at_directory("temp_latent_representations")
 
 smile_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/smile.npy'))
 gender_direction = np.load(join(PROJ_PATH, 'ffhq_dataset/latent_directions/gender.npy'))

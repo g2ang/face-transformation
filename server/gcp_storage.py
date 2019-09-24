@@ -18,11 +18,13 @@ def upload_files(files_dictionary):
     date = datetime.datetime.now()
     dt_name = date.strftime("%Y-%m-%d-%H-%M-%S")
     for key, value in files_dictionary.items():
-        file_name = f"{dt_name}({key}).jpeg"
-        value.save(file_name)
+        file_name = f"{dt_name}({key}).png"
+        file_path = f"{os_util_wrapper.current_path}/temp_done_img/{file_name}"
+        value.save(file_path)
         blob = bucket.blob(file_name)
-        blob.upload_from_filename(file_name)
+        with open(file_path, "rb") as my_file:
+            blob.upload_from_file(my_file)
         image_dictionary[key] = f'{image_base_end_point}{file_name}'
-        os_util_wrapper.remove_file_relative_path(file_name)
+        os_util_wrapper.remove_file_absolute_path(file_path)
 
     return image_dictionary

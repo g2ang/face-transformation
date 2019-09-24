@@ -2,7 +2,7 @@ from flask import Flask, escape, request
 import encode
 import gcp_storage
 from flask_cors import CORS
-import os_util
+import os_util_wrapper
 
 app = Flask(__name__)
 cors = CORS(app, resources={
@@ -47,7 +47,7 @@ def smile():
     if file.filename == '':
       return 'No selected file', 400
     if file and allowed_file(file.filename):
-      os_util.save_temp_img(file)
+      os_util_wrapper.save_temp_img(file)
       encode.generate_latent_vector()
 
       latent_vector = load_generated_latent_vector()

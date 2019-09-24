@@ -49,7 +49,7 @@ def generate_latent_vector():
 def load_generated_latent_vector():
     for file in os.listdir(f"{os_util_wrapper.parent_path}/server/temp_latent_representations"):
         if file.endswith(".npy"):
-            return np.load(join("{os_util_wrapper.parent_path}/server/temp_latent_representations", file))
+            return np.load(join(f"{os_util_wrapper.parent_path}/server/temp_latent_representations", file))
 
 def clear_temp_folder():
     os_util_wrapper.remove_all_file_at_directory("raw_temp_img")

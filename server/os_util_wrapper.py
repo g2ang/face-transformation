@@ -24,3 +24,10 @@ def remove_all_file_at_directory(directory):
 def save_temp_img(img):
     img.save(f"{current_path}/raw_temp_img/{img.filename}")
     return f"{current_path}/raw_temp_img/{img.filename}"
+
+def clear_temp_folder():
+    os_util_wrapper.remove_all_file_at_directory("raw_temp_img")
+    os_util_wrapper.remove_all_file_at_directory("aligned_temp_img")    
+    os_util_wrapper.remove_all_file_at_directory("generated_temp_img")
+    os_util_wrapper.remove_all_file_at_directory("temp_latent_representations")
+    os_util_wrapper.remove_all_file_at_directory("temp_done_img")

@@ -25,6 +25,5 @@ def upload_files(files_dictionary):
         with open(file_path, "rb") as my_file:
             blob.upload_from_file(my_file)
         image_dictionary[key] = f'{image_base_end_point}{file_name}'
-        os_util_wrapper.remove_file_absolute_path(file_path)
 
     return image_dictionary

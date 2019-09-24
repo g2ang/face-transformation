@@ -50,7 +50,7 @@ def smile():
       os_util_wrapper.save_temp_img(file)
       encode.generate_latent_vector()
 
-      latent_vector = load_generated_latent_vector()
+      latent_vector = encode.load_generated_latent_vector()
 
       smile_images = encode.convert_style(encode.smile_direction, latent_vector, smile_coeff)
       gender_images = encode.convert_style(encode.smile_direction, latent_vector, gender_coeff)
